@@ -1,25 +1,45 @@
-import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap.css'
+import React, { Component } from 'react'
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+    constructor() {
+        super()
+        this.state = {
+            markdown: ''
+        }
+        this.handleChange = this.handleChange.bind(this)
+    }
+
+    handleChange(event) {
+        this.setState({
+            markdown: event.target.value
+        })
+    }
+    render() {
+        return (
+            <div className="container">
+                <div className="row">
+                    <div className="col-md-6">
+                        <h2>Markdown</h2>
+                        <textarea 
+                            rows="8" 
+                            onChange={this.handleChange}
+                            value={this.state.markdown}
+                            style={{width: "300"}} 
+                        />
+                    </div>
+                    <div className="col-md-6">
+                        <h2>Preview</h2>
+                        <div>
+                            {this.state.markdown}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+        
 }
 
 export default App;
