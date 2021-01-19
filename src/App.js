@@ -1,5 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.css'
 import React, { Component } from 'react'
+import marked from 'marked'
 import './App.css';
 
 class App extends Component {
@@ -32,7 +33,7 @@ class App extends Component {
                     <div className="col-md-6">
                         <h2>Preview</h2>
                         <div>
-                            {this.state.markdown}
+                            dangerouslySetInnerHTML={{__html: marked(this.state.markdown)}}
                         </div>
                     </div>
                 </div>
